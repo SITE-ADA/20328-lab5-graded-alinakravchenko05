@@ -150,7 +150,7 @@ public class EventController {
             Event updated = eventService.updateEventPrice(id, price);
             return new ResponseEntity<>(updated, HttpStatus.OK);
         } catch (RuntimeException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

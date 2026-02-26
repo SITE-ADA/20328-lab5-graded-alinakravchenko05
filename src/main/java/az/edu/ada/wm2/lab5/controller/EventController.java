@@ -111,4 +111,17 @@ public class EventController {
         }
     }
 
+    @GetMapping("/filter/price")
+    public ResponseEntity<List<Event>> filterByPrice(
+            @RequestParam BigDecimal min,
+            @RequestParam BigDecimal max
+    ) {
+        try {
+            List<Event> events = eventService.getEventsByPriceRange(min, max);
+            return new ResponseEntity<>(events, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }
